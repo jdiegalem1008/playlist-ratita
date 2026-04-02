@@ -67,7 +67,6 @@ z-index:-1;
 #intro{
 
 position:fixed;
-
 top:0;
 left:0;
 
@@ -82,6 +81,9 @@ background:black;
 
 z-index:5;
 
+overflow-y:auto;
+padding:40px 20px;
+
 transition:opacity 0.7s ease;
 
 }
@@ -90,11 +92,13 @@ transition:opacity 0.7s ease;
 
 .carta{
 
-max-width:560px;   /* antes 420px */
+max-width:560px;
+
+width:90%;
 
 text-align:center;
 
-padding:40px 50px;  /* más espacio dentro */
+padding:40px 50px;
 
 background:#111;
 
@@ -107,9 +111,9 @@ z-index:2;
 
 transition:transform 0.7s ease;
 
-line-height:1.6;   /* separa mejor las líneas */
-}
+line-height:1.6;
 
+}
 #abrir{
 
 margin-top:20px;
@@ -225,33 +229,47 @@ text-align:right;
 /* canciones */
 
 .cancion{
+
 display:grid;
 
 grid-template-columns: 
-60px   /* numero */
-50px   /* corazón */
-70px   /* portada */
-2fr    /* titulo */
-1.5fr  /* album */
-150px  /* fecha */
-80px;  /* duración */
+60px
+50px
+70px
+2fr
+1.5fr
+150px
+80px;
 
 align-items:center;
 
+min-height:60px; 
 gap:18px;
 
-padding:14px 25px;
+padding:8px 25px;
 
-margin-left:20px;
+
 
 font-size:15px;
 
 border-radius:6px;
 
-transition:0.15s;
+transition:
+opacity .35s ease,
+transform .35s ease,
+background .15s;
 
 }
 
+.cancion.oculta{
+
+opacity:0;
+
+transform:translateY(15px) scale(.98);
+
+pointer-events:none;
+
+}
 .cancion:hover{
 background:rgba(255,255,255,0.06);
 cursor:pointer;
@@ -262,6 +280,18 @@ width:48px;
 height:48px;
 object-fit:cover;
 border-radius:4px;
+}
+.cancion div:nth-child(4),
+.cancion div:nth-child(5){
+line-height:1.2;
+}
+
+.cancion div:nth-child(4){
+margin-bottom:2px;
+}
+
+.cancion div:nth-child(5){
+opacity:.6;
 }
 
 .cancion div:first-child{
@@ -649,7 +679,117 @@ display:none;
 }
 
 .cancion{
-grid-template-columns:40px 40px 60px 1fr;
-}
+
+display:grid;
+
+grid-template-columns: 30px 60px 1fr 35px;
+
+grid-template-areas:
+"num cover titulo fav"
+"num cover artista fav";
+
+gap:2px;                 /* menos separación vertical */
+
+padding:8px 15px;        /* menos padding */
+
+margin-left:0;
+
+align-items:center;
 
 }
+
+/* numero */
+.cancion div:nth-child(1){
+grid-area:num;
+text-align:right;
+padding-right:10px; /* 👈 empuja el número a la izquierda */
+opacity:0.6;
+}
+
+/* portada */
+.cancion img{
+grid-area:cover;
+width:52px;
+height:52px;
+
+
+}
+
+
+/* titulo */
+.cancion div:nth-child(4){
+grid-area:titulo;
+margin-top:10px; /* 👈 ajusta esto */
+font-size:15px;
+font-weight:500;
+}
+
+.cancion div:nth-child(5){
+grid-area:artista;
+font-size:13px;
+margin-top:2px; /* 👈 opcional */
+opacity:.6;
+}
+
+/* ocultar album fecha duracion */
+.cancion div:nth-child(6),
+.cancion div:nth-child(7){
+display:none;
+}
+
+/* corazon */
+.fav-btn{
+grid-area:fav;
+justify-self:end;
+font-size:18px;
+}
+
+.cancion div:nth-child(5){
+display:none;
+}
+
+.player{
+
+max-width:85%;
+
+padding:20px;
+
+background:#111;
+
+border-radius:14px;
+
+}
+
+.player img{
+
+width:200px;
+
+}
+}
+
+.controles-playlist{
+
+display:flex;
+justify-content:center;
+gap:20px;
+
+margin-top:15px;
+margin-bottom:10px;
+
+font-size:20px;
+
+}
+
+.controles-playlist span{
+cursor:pointer;
+opacity:0.7;
+transition:0.2s;
+}
+
+.controles-playlist span:hover{
+opacity:1;
+transform:scale(1.15);
+}
+
+
+
