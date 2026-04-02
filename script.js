@@ -11,7 +11,7 @@ duracion:"2:15",
 
 portada:"https://i.scdn.co/image/ab67616d0000b273e445817e3265ff9c83d32817",
 youtube:"https://www.youtube.com/watch?v=dLDbnfGsQgQ",
-nota:"Desde que escuché esta canción dije, tú. "
+nota:"Quería empezar con esta pues, la verdad nose por qué jsjs...Me parece una canción hermosa y desde que escuché esta canción dije, tú. "
 },
 
 {
