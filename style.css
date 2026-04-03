@@ -306,7 +306,7 @@ opacity:0.6;
 
 /* popup */
 #reproductor{
-
+touch-action: pan-y;
 position:fixed;
 top:0;
 left:0;
@@ -666,6 +666,9 @@ pointer-events:none;
 align-items:flex-start; /* 👈 esto evita que se corte */
 padding-top:80px;
 padding-bottom:120px; /* 👈 espacio extra para el botón */
+}
+.nav{
+display:none;
 }
 .header{
 flex-direction:column;

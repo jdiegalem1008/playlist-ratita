@@ -1857,3 +1857,35 @@ cerrar.click();
 }
 
 });
+
+// ========================
+// SWIPE EN CELULAR
+// ========================
+
+let startX = 0;
+let endX = 0;
+
+reproductor.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+
+reproductor.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    manejarSwipe();
+});
+
+function manejarSwipe() {
+    let diferencia = startX - endX;
+
+    if (Math.abs(diferencia) > 50) { // sensibilidad
+
+        if (diferencia > 0) {
+            // 👉 swipe izquierda → siguiente
+            siguiente.click();
+        } else {
+            // 👉 swipe derecha → anterior
+            anterior.click();
+        }
+
+    }
+}
